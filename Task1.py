@@ -1,7 +1,7 @@
 from random import random, randint
 bonbons = 100 #количество конфет
 index = 28 #максимальное кол-во кофет за ход
-win = bonbons % (index+1)
+win = bonbons % (index+1) #выигрышная комбинация для первого хода
 player1 = input('Введите ваше имя: ')
 player2 = 'бот'
 player = ''
@@ -11,14 +11,14 @@ else: player = player2
 print(f'Первым ходит {player}')
 
 
-def check(x, a, b, c):#Проверка кол-ва конфет, которое берёт игрок
-    #x - сколько взял игрок, а -минимальное, которое он может взять, b- максимальное, с-сколько всего есть конфет
-    if a <= x <= b and x <= c: return x
-    elif a <= x <= b and x > c:
-        while not (a <= x <= b and x <= c):
+def check(x, b, c):#Проверка кол-ва конфет, которое берёт игрок
+    #x - сколько взял игрок, b- максимальное кол-во, которое он может взять, с-сколько всего есть конфет
+    if 1 <= x <= b and x <= c: return x
+    elif 1 <= x <= b and x > c:
+        while not (1 <= x <= b and x <= c):
             x = int(input(f'Осталось всего {c} конфет(ы). Введите число от 1 до {c} включительно: '))
     else:
-        while not(a <= x <= b):
+        while not(1 <= x <= b):
             x = int(input(f'Вы неправильно ввели кол-во конфет. Введите число от 1 до {x} включительно: '))
     return x
 
@@ -29,7 +29,7 @@ def game(k, x, pl1, pl2):
         pl = pl1
         print(f'Осталось {k} конфет(ы). Вы можете взять от 1 до {x} конфет')
         taken = int(input('Ваш ход: '))
-        taken = check(taken, 1, x, k)
+        taken = check(taken, x, k)
         k -= taken
         if k == 0:
             break
