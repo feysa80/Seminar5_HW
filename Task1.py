@@ -1,14 +1,11 @@
+import functions as f
 from random import random, randint
 bonbons = 100 #количество конфет
 index = 28 #максимальное кол-во кофет за ход
 win = bonbons % (index+1) #выигрышная комбинация для первого хода
 player1 = input('Введите ваше имя: ')
 player2 = 'бот'
-player = ''
-first_player = randint(1, 2) #случайным образом выбираем кто будет ходить первым
-if first_player == 1: player = player1
-else: player = player2
-print(f'Первым ходит {player}')
+player = f.first_player(player1, player2)
 
 
 def check(x, b, c):#Проверка кол-ва конфет, которое берёт игрок
@@ -45,22 +42,9 @@ def game(k, x, pl1, pl2):
 
 
 if player == player2:
-    print(f'Бот взял {win} конфет')
+    print(f'Бот взял {win} конфет(ы)')
     bonbons = bonbons - win
     player = player1
-    # print(f'Осталось {bonbons} конфет. Вы можете взать от 1 до 28 конфет')
-    # taken = input('Ваш ход: ')
     game(bonbons, index, player1, player2)
 else:
     game(bonbons, index, player1, player2)
-
-
-
-
-
-
-
-
-
-
-
