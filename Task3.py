@@ -26,10 +26,7 @@ def reconvert_rle(lst):
     res = ''.join(temp)
     return res
 
+
 str_new = convert_rle(string_in)
 print(str_new)
 print(reconvert_rle(str_new))
-
-
-
-
